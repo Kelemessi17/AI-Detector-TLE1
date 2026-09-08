@@ -1,4 +1,17 @@
-// Elementen ophalen
+window.addEventListener('load', init);
+
+function init() {
+
+    let button = document.querySelector(".language-button");
+    let dropdown = document.querySelector(".language-dropdown");
+
+
+    button.addEventListener("click", function () {
+        dropdown.classList.toggle("open");
+    });
+
+}
+
 
 const videoInput = document.getElementById("videoInput");
 const uploadText = document.getElementById("uploadText");
