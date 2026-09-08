@@ -1,0 +1,38 @@
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+}
+
+title {
+    font-family: serif;
+    font-size: 25px;
+}
+
+nav {
+    display: flex;
+}
+
+select {
+    width: 11vw;
+    height: 5vh;
+    margin: 20px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 22px;
+}
+
+option {
+    width: 150px;
+    height: 40px;
+    margin: 20px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: 16px;
+}
+
