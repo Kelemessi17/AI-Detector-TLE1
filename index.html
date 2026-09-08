@@ -7,6 +7,7 @@
 
     <title>ReelDetect</title>
     <link rel="stylesheet" href="index.css">
+    <script src="text/javascript" src="js/main.js" defer></script>
 </head>
 
 <body>
@@ -24,26 +25,77 @@
             <option>🇨🇳 中文</option>
         </select>
     </nav>
-
-
 </header>
+
+
+<main class="container">
+
+    <h1>Reels Detector</h1>
+
+    <section class="detector-box">
+
+        <h2>Controleer je video</h2>
+
+        <p class="description">
+            Upload een video en controleer of deze mogelijk door AI is gemaakt.
+        </p>
+
+        <!-- Video upload -->
+        <label for="videoInput" class="upload-area">
+            <span class="upload-icon">📁</span>
+            <span id="uploadText">Klik hier om een video te uploaden</span>
+            <small>MP4, MOV, AVI etc.</small>
+        </label>
+
+        <input
+                type="file"
+                id="videoInput"
+                accept="video/*"
+                hidden
+        >
+
+        <!-- Geselecteerde video -->
+        <div id="videoPreview" class="video-preview">
+            <video id="videoPlayer" controls></video>
+        </div>
+
+        <!-- Check knop -->
+        <button id="checkButton" class="check-button" disabled>
+            ✓ Check video
+        </button>
+
+        <!-- Loading -->
+        <div id="loading" class="loading">
+
+            <div class="spinner"></div>
+
+            <p>Video wordt gecontroleerd...</p>
+
+            <div class="percentage" id="percentage">
+                0%
+            </div>
+
+        </div>
+
+        <!-- Resultaat -->
+        <div id="result" class="result">
+
+            <div id="resultIcon" class="result-icon"></div>
+
+            <h2 id="resultTitle"></h2>
+
+            <p id="resultText"></p>
+
+            <button id="againButton" class="again-button">
+                Opnieuw controleren
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
 
 </body>
 
 </html>
-
-
-<!--
-<img class="flag" src="https://www.google.com/imgres?q=nederlandse%20vlag&imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F2%2F20%2FFlag_of_the_Netherlands.svg%3Futm_source%3Dnl.wikipedia.org%26utm_campaign%3Dindex%26utm_content%3Doriginal&imgrefurl=https%3A%2F%2Fnl.wikipedia.org%2Fwiki%2FVlag_van_Nederland&docid=ggd6Y2V-W6nHsM&tbnid=KailnEpiKpztyM&vet=12ahUKEwi-no_VudyWAxWx-QIHHYoxCWkQnPAOegQIMRAA..i&w=900&h=600&hcb=2&ved=2ahUKEwi-no_VudyWAxWx-QIHHYoxCWkQnPAOegQIMRAA"
-     alt="Vlag van Nederland"> 
-<img class="flag" src=https://www.google.com/imgres?q=Engeland%20vlag&imgurl=https%3A%2F%2Fbritblog.nl%2Fwordpress%2Fwp-content%2Fuploads%2F2019%2F07%2F1280px-Flag_of_the_United_Kingdom.svg_.png&imgrefurl=https%3A%2F%2Fbritblog.nl%2Funion-jack-de-britse-vlag-en-zijn-geschiedenis%2F&docid=3mbE--nbhqR04M&tbnid=loDVUIgaAvTIPM&vet=12ahUKEwicxPSetdyWAxVn9AIHHXjJB9wQnPAOegQIOxAA..i&w=1280&h=640&hcb=2&ved=2ahUKEwicxPSetdyWAxVn9AIHHXjJB9wQnPAOegQIOxAA
-     alt= "Vlag van Engeland"> 
-<img class="flag" src="https://www.google.com/imgres?q=Spanje%20vlag&imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F9%2F9a%2FFlag_of_Spain.svg%3Futm_source%3Dnl.wikipedia.org%26utm_campaign%3Dindex%26utm_content%3Doriginal&imgrefurl=https%3A%2F%2Fnl.wikipedia.org%2Fwiki%2FVlag_van_Spanje&docid=faqycB7EXnaOaM&tbnid=ar2pJASGC6_NsM&vet=12ahUKEwj0q_HItdyWAxWxxQIHHSmUBMQQnPAOegQIPRAA..i&w=750&h=500&hcb=2&ved=2ahUKEwj0q_HItdyWAxWxxQIHHSmUBMQQnPAOegQIPRAA"
-     alt= "Vlag van Spanje">     
-<img class="flag" src="https://www.google.com/imgres?q=Italiaanse%20vlag&imgurl=https%3A%2F%2Fthumb.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F4%2F41%2FFlag_of_Italy_%25282003%25E2%2580%25932006%2529.svg%2F250px-Flag_of_Italy_%25282003%25E2%2580%25932006%2529.svg.png%3Futm_source%3Dnl.wikipedia.org%26utm_campaign%3Dparser%26utm_content%3Dthumbnail&imgrefurl=https%3A%2F%2Fnl.wikipedia.org%2Fwiki%2FVlag_van_Itali%25C3%25AB&docid=LqsphcM3HnbbbM&tbnid=S9KpaA2SawiFIM&vet=12ahUKEwjmh-TZtdyWAxWk3QIHHX9QFzwQnPAOegQINhAA..i&w=250&h=167&hcb=2&ved=2ahUKEwjmh-TZtdyWAxWk3QIHHX9QFzwQnPAOegQINhAA"      
-     alt="Vlag van Italie" >
-<img class="flag" src="https://www.google.com/url?sa=t&source=web&rct=j&url=https%3A%2F%2Fnl.wikipedia.org%2Fwiki%2FVlag_van_Turkije&ved=0CBYQjRxqFwoTCODSrpS23JYDFQAAAAAdAAAAABA4&opi=89978449"     
-     alt="Vlag van Turkije">
-<img class="flag" src="https://www.google.com/imgres?q=china%20vlag&imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ffa%2FFlag_of_the_People%2527s_Republic_of_China.svg%2F1280px-Flag_of_the_People%2527s_Republic_of_China.svg.png%3Futm_source%3Dnl.wikipedia.org%26utm_campaign%3Dindex%26utm_content%3Dthumbnail&imgrefurl=https%3A%2F%2Fnl.wikipedia.org%2Fwiki%2FVlag_van_de_Volksrepubliek_China&docid=YiWl9iLgb4iLuM&tbnid=cnmhDcP29NjlWM&vet=12ahUKEwi6mKOBt9yWAxVlwAIHHYJsGD8QnPAOegQINBAA..i&w=1280&h=854&hcb=2&ved=2ahUKEwi6mKOBt9yWAxVlwAIHHYJsGD8QnPAOegQINBAA"     
-     alt="Vlag vam China" >
-<      -->
