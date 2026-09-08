@@ -12,6 +12,10 @@ title {
     font-size: 25px;
 }
 
+nav {
+    display: flex;
+}
+
 select {
     width: 11vw;
     height: 5vh;
