@@ -7,7 +7,7 @@
 
     <title>ReelDetect</title>
     <link rel="stylesheet" href="index.css">
-    <script src="text/javascript" src="js/main.js" defer></script>
+    <script type="text/javascript" src="home.js" defer></script>
 </head>
 
 <body>
@@ -35,39 +35,43 @@
 
 <main class="container">
 
+    <div class="method-buttons">
+        <button id="videoButton">🎥 Video uploaden</button>
+        <button id="urlButton">🔗 URL invullen</button>
+    </div>
+
     <section class="detector-box">
 
         <h2>Controleer je video</h2>
 
-        <p class="description">
+        <p id="descriptionUpload" class="description-Upload">
             Upload een video en controleer of deze mogelijk door AI is gemaakt.
         </p>
 
-        <!-- Video upload -->
-        <label for="videoInput" class="upload-area">
+        <p id="descriptionUrl" class="description-Url">
+            Voer de url van de video in en controleer of deze mogelijk door AI is gemaakt.
+        </p>
+
+
+        <label for="videoInput" class="upload-area" id="videoUpload">
             <span class="upload-icon">📁</span>
             <span id="uploadText">Klik hier om een video te uploaden</span>
             <small>MP4, MOV, AVI etc.</small>
         </label>
 
-        <input
-                type="file"
-                id="videoInput"
-                accept="video/*"
-                hidden
-        >
+        <div for="urlInput" class="url-upload" id="urlUpload">
+            <input type="text" placeholder="Plak hier de URL van je video">
+        </div>
 
-        <!-- Geselecteerde video -->
+        <input type="file" id="videoInput" accept="video/*" hidden>
+
         <div id="videoPreview" class="video-preview">
             <video id="videoPlayer" controls></video>
         </div>
 
-        <!-- Check knop -->
-        <button id="checkButton" class="check-button" disabled>
-            ✓ Check video
-        </button>
 
-        <!-- Loading -->
+        <button id="checkButton" class="check-button" disabled> ✓ Check video</button>
+
         <div id="loading" class="loading">
 
             <div class="spinner"></div>
@@ -79,8 +83,7 @@
             </div>
 
         </div>
-
-        <!-- Resultaat -->
+        
         <div id="result" class="result">
 
             <div id="resultIcon" class="result-icon"></div>

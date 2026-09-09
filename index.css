@@ -28,7 +28,7 @@ h1 {
 }
 
 select, option {
-    width: 11vw;
+    width: 12vw;
     height: 5vh;
     margin-top: 5vh;
     margin-bottom: 5vh;
@@ -40,10 +40,50 @@ select, option {
 }
 
 
+.method-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10vw;
+    margin: 20px;
+}
+
+.method-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.method-buttons button:hover {
+    padding: 11px 21px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #ddd;
+
+}
+
+.url-upload {
+    display: none;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.url-upload input {
+    width: 60%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+}
+
 .detector-box {
     background: white;
     border-radius: 15px;
-    padding: 30px;
+    padding-top: 10vh;
+    padding-bottom: 15vh;
+    padding-left: 4vw;
+    padding-right: 4vw;
+
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     text-align: center;
 }
@@ -52,13 +92,18 @@ select, option {
     margin-bottom: 10px;
 }
 
-.description {
+.description-Upload {
     color: #666;
     margin-bottom: 25px;
     line-height: 1.5;
 }
 
-/* Upload */
+.description-Url {
+    display: none;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
 
 .upload-area {
     display: flex;
@@ -66,6 +111,8 @@ select, option {
     align-items: center;
     justify-content: center;
 
+    width: 60%;
+    margin: 0 auto;
     min-height: 180px;
 
     border: 2px dashed #bbb;
@@ -95,7 +142,6 @@ select, option {
     margin-top: 8px;
 }
 
-/* Video */
 
 .video-preview {
     display: none;
@@ -108,10 +154,11 @@ select, option {
     border-radius: 10px;
 }
 
-/* Check knop */
 
 .check-button {
-    width: 100%;
+    width: 60%;
+    margin: 0 auto;
+
     border: none;
     border-radius: 10px;
 
@@ -139,7 +186,6 @@ select, option {
     cursor: not-allowed;
 }
 
-/* Loading */
 
 .loading {
     display: none;
@@ -176,8 +222,6 @@ select, option {
     font-weight: bold;
 }
 
-/* Resultaat */
-
 .result {
     display: none;
     margin-top: 30px;
@@ -201,8 +245,6 @@ select, option {
     line-height: 1.5;
 }
 
-/* Opnieuw knop */
-
 .again-button {
     margin-top: 20px;
 
@@ -222,8 +264,6 @@ select, option {
 .again-button:hover {
     background: #444;
 }
-
-/* Mobiel */
 
 @media (max-width: 500px) {
 

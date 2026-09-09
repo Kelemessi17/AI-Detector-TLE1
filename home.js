@@ -1,15 +1,40 @@
 window.addEventListener('load', init);
 
+let videoButton;
+let urlButton;
+let videoUpload;
+let urlUpload;
+let descriptionUpload;
+let descriptionUrl;
+
 function init() {
 
-    let button = document.querySelector(".language-button");
-    let dropdown = document.querySelector(".language-dropdown");
+    videoButton = document.getElementById('videoButton');
+    urlButton = document.getElementById('urlButton');
+    descriptionUpload = document.getElementById('descriptionUpload');
+    descriptionUrl = document.getElementById('descriptionUrl');
 
+    videoUpload = document.getElementById('videoUpload');
+    urlUpload = document.getElementById('urlUpload');
 
-    button.addEventListener("click", function () {
-        dropdown.classList.toggle("open");
-    });
+    videoButton.addEventListener('click', videoButtonClickHandler);
+    urlButton.addEventListener('click', urlButtonClickHandler);
+    
+    function videoButtonClickHandler() {
+        videoUpload.style.display = 'flex';
+        urlUpload.style.display = 'none';
 
+        descriptionUpload.style.display = 'block';
+        descriptionUrl.style.display = 'none';
+    }
+
+    function urlButtonClickHandler() {
+        videoUpload.style.display = 'none';
+        urlUpload.style.display = 'block';
+
+        descriptionUpload.style.display = 'none';
+        descriptionUrl.style.display = 'block';
+    }
 }
 
 
