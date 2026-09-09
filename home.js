@@ -7,57 +7,86 @@ let urlUpload;
 let descriptionUpload;
 let descriptionUrl;
 
+let videoInput;
+let uploadText;
+let videoPreview;
+let videoPlayer;
+
+let checkButton;
+let loading;
+let percentage;
+
+let result;
+let resultIcon;
+let resultTitle;
+let resultText;
+
+let againButton;
+
+
 function init() {
 
     videoButton = document.getElementById('videoButton');
     urlButton = document.getElementById('urlButton');
+
     descriptionUpload = document.getElementById('descriptionUpload');
     descriptionUrl = document.getElementById('descriptionUrl');
 
     videoUpload = document.getElementById('videoUpload');
     urlUpload = document.getElementById('urlUpload');
 
+    videoInput = document.getElementById('videoInput');
+    uploadText = document.getElementById('uploadText');
+
+    videoPreview = document.getElementById('videoPreview');
+    videoPlayer = document.getElementById('videoPlayer');
+
+    checkButton = document.getElementById('checkButton');
+
+    loading = document.getElementById('loading');
+    percentage = document.getElementById('percentage');
+
+    result = document.getElementById('result');
+    resultIcon = document.getElementById('resultIcon');
+    resultTitle = document.getElementById('resultTitle');
+    resultText = document.getElementById('resultText');
+
+    againButton = document.getElementById('againButton');
+
+
     videoButton.addEventListener('click', videoButtonClickHandler);
     urlButton.addEventListener('click', urlButtonClickHandler);
-    
-    function videoButtonClickHandler() {
-        videoUpload.style.display = 'flex';
-        urlUpload.style.display = 'none';
 
-        descriptionUpload.style.display = 'block';
-        descriptionUrl.style.display = 'none';
-    }
+    videoInput.addEventListener('change', videoInputChangeHandler);
+    checkButton.addEventListener('click', checkButtonClickHandler);
+    againButton.addEventListener('click', againButtonClickHandler);
 
-    function urlButtonClickHandler() {
-        videoUpload.style.display = 'none';
-        urlUpload.style.display = 'block';
-
-        descriptionUpload.style.display = 'none';
-        descriptionUrl.style.display = 'block';
-    }
 }
 
 
-const videoInput = document.getElementById("videoInput");
-const uploadText = document.getElementById("uploadText");
+function videoButtonClickHandler() {
 
-const videoPreview = document.getElementById("videoPreview");
-const videoPlayer = document.getElementById("videoPlayer");
+    videoUpload.style.display = 'flex';
+    urlUpload.style.display = 'none';
 
-const checkButton = document.getElementById("checkButton");
+    descriptionUpload.style.display = 'block';
+    descriptionUrl.style.display = 'none';
 
-const loading = document.getElementById("loading");
-const percentage = document.getElementById("percentage");
-
-const result = document.getElementById("result");
-const resultIcon = document.getElementById("resultIcon");
-const resultTitle = document.getElementById("resultTitle");
-const resultText = document.getElementById("resultText");
-
-const againButton = document.getElementById("againButton");
+}
 
 
-videoInput.addEventListener("change", function () {
+function urlButtonClickHandler() {
+
+    videoUpload.style.display = 'none';
+    urlUpload.style.display = 'block';
+
+    descriptionUpload.style.display = 'none';
+    descriptionUrl.style.display = 'block';
+
+}
+
+
+function videoInputChangeHandler() {
 
     const file = videoInput.files[0];
 
@@ -66,9 +95,12 @@ videoInput.addEventListener("change", function () {
     }
 
     // Controleer of het een video is
-    if (!file.type.startsWith("video/")) {
-        alert("Selecteer alstublieft een videobestand.");
-        videoInput.value = "";
+    if (!file.type.startsWith('video/')) {
+
+        alert('Selecteer alstublieft een videobestand.');
+
+        videoInput.value = '';
+
         return;
     }
 
@@ -80,30 +112,28 @@ videoInput.addEventListener("change", function () {
 
     videoPlayer.src = videoURL;
 
-    videoPreview.style.display = "block";
+    videoPreview.style.display = 'block';
 
     // Check knop activeren
     checkButton.disabled = false;
 
-});
+}
 
 
-// Wanneer op Check wordt geklikt
-
-checkButton.addEventListener("click", function () {
+function checkButtonClickHandler() {
 
     // Check knop verbergen
-    checkButton.style.display = "none";
+    checkButton.style.display = 'none';
 
     // Loading tonen
-    loading.style.display = "block";
+    loading.style.display = 'block';
 
     // Resultaat verbergen
-    result.style.display = "none";
+    result.style.display = 'none';
 
     let progress = 0;
 
-    percentage.textContent = "0%";
+    percentage.textContent = '0%';
 
 
     // Simuleer de controle
@@ -116,7 +146,7 @@ checkButton.addEventListener("click", function () {
 
             progress = 100;
 
-            percentage.textContent = "100%";
+            percentage.textContent = '100%';
 
             clearInterval(progressInterval);
 
@@ -127,22 +157,20 @@ checkButton.addEventListener("click", function () {
 
         } else {
 
-            percentage.textContent = progress + "%";
+            percentage.textContent = progress + '%';
 
         }
 
     }, 150);
 
-});
+}
 
-
-// Resultaat genereren
 
 function showResult() {
 
-    loading.style.display = "none";
+    loading.style.display = 'none';
 
-    result.style.display = "block";
+    result.style.display = 'block';
 
 
     // Willekeurig AI-percentage tussen 0 en 100
@@ -152,42 +180,40 @@ function showResult() {
     if (aiPercentage < 30) {
 
         // Waarschijnlijk geen AI
-        resultIcon.textContent = "✓";
+        resultIcon.textContent = '✓';
 
-        resultTitle.textContent = "Deze video bevat waarschijnlijk geen AI";
+        resultTitle.textContent = 'Deze video bevat waarschijnlijk geen AI';
 
         resultText.textContent =
-            "Onze test geeft een kans van " +
+            'Onze test geeft een kans van ' +
             aiPercentage +
-            "% dat deze video door AI is gemaakt.";
+            '% dat deze video door AI is gemaakt.';
 
     } else {
 
         // Mogelijk AI
-        resultIcon.textContent = "⚠️";
+        resultIcon.textContent = '⚠️';
 
-        resultTitle.textContent = "Deze video bevat mogelijk AI";
+        resultTitle.textContent = 'Deze video bevat mogelijk AI';
 
         resultText.textContent =
-            "Deze video bevat een kans van " +
+            'Deze video bevat een kans van ' +
             aiPercentage +
-            "% dat deze door AI is gemaakt.";
+            '% dat deze door AI is gemaakt.';
 
     }
 
 }
 
 
-// Opnieuw controleren
-
-againButton.addEventListener("click", function () {
+function againButtonClickHandler() {
 
     // Resultaat verbergen
-    result.style.display = "none";
+    result.style.display = 'none';
 
     // Check knop weer tonen
-    checkButton.style.display = "block";
+    checkButton.style.display = 'block';
 
     // Nieuwe controle kan opnieuw worden gestart
 
-});
+}
